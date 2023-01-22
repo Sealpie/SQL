@@ -12,7 +12,7 @@ USING
 
 2.JOIN TABLE
 
-3.Aggregate Functions : COUNT / SUM
+3.Aggregate Functions : COUNT / SUM / AVG
 
 4.SUBQUERIES
 
