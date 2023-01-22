@@ -1,0 +1,50 @@
+--Import Database
+Database: chinook.db
+
+--SELECT TABLE > invoice_items
+
+SELECT invoicelineid, 
+       invoiceid 
+FROM invoice_items;
+
+--JOIN TABLE to add detail.
+invoice_items JOIN invoices   : Primarykey = invoiceid 
+invoices      JOIN customers  : Primarykey = CustomerId
+
+SELECT  IT.invoicelineid,
+		IT.InvoiceId,
+        I.CustomerId,
+        C.firstname || ' ' || lastname AS Name_Customer,
+        C.email,
+        I.billingaddress,
+        I.billingcountry,
+        I.BillingPostalCode,
+        IT.quantity,
+        IT.UnitPrice
+FROM invoice_items AS IT , invoices AS I, customers AS C
+WHERE IT.invoiceid = I.invoiceid 
+AND I.CustomerId = C.CustomerId
+ORDER BY invoicelineid ASC;
+
+-- Using SUBQUERIES to group per Country
+SELECT billingcountry AS Country, 
+    SUM(quantity) AS Total_Quantity,
+	ROUND (SUM(unitprice),2) AS Total_Price
+    FROM
+	(SELECT  IT.invoicelineid,
+		IT.InvoiceId,
+        I.CustomerId,
+        C.firstname || ' ' || lastname AS Name_Customer,
+        C.email,
+        I.billingaddress,
+        I.billingcountry,
+        I.BillingPostalCode,
+        IT.quantity,
+        IT.UnitPrice
+FROM invoice_items AS IT , invoices AS I, customers AS C
+WHERE IT.invoiceid = I.invoiceid 
+AND I.CustomerId = C.CustomerId
+ORDER BY invoicelineid ASC)
+GROUP BY billingcountry;
+
+====================================================================================
