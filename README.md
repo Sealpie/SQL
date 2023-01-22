@@ -1,5 +1,7 @@
 SQL Project 
 
+=======================================================
+
 Data: Chinook.db;
 
 Use SQL to find Quantity and Price per country. And Ranking Top 10 country.
