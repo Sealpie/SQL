@@ -1,10 +1,17 @@
-# SQL
 SQL Project
-====================
-Data: chinook.db
-1.SELECT DATA
-2.FILTER DATA
-3.CASE WHEN
-4.Join Table
-5.SUBQUERIES
-====================
+
+Data: Chinook.db;
+
+Use SQL to find Quantity and Price per Country.
+
+USING
+
+1.SELECT
+
+2.JOIN TABLE
+
+3.Aggregate Functions : COUNT / SUM
+
+4.SUBQUERIES
+
+5.GROUP BY
