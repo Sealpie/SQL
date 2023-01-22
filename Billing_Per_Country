@@ -26,11 +26,12 @@ WHERE IT.invoiceid = I.invoiceid
 AND I.CustomerId = C.CustomerId
 ORDER BY invoicelineid ASC;
 
--- Using SUBQUERIES to group per Country
+-- Using SUBQUERIES to group per Country and Ranking Top 10 quantity.
+
 SELECT billingcountry AS Country, 
     SUM(quantity) AS Total_Quantity,
-	ROUND (SUM(unitprice),2) AS Total_Price
-    FROM
+    ROUND (SUM(unitprice),2) AS Total_Price,
+    ROUND (AVG(unitprice),2) AS AVG_Price    FROM
 	(SELECT  IT.invoicelineid,
 		IT.InvoiceId,
         I.CustomerId,
@@ -45,6 +46,8 @@ FROM invoice_items AS IT , invoices AS I, customers AS C
 WHERE IT.invoiceid = I.invoiceid 
 AND I.CustomerId = C.CustomerId
 ORDER BY invoicelineid ASC)
-GROUP BY billingcountry;
+GROUP BY billingcountry
+ORDER BY Total_Quantity DESC
+LIMIT 10;
 
 ====================================================================================
