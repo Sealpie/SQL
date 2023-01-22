@@ -2,7 +2,7 @@ SQL Project
 
 Data: Chinook.db;
 
-Use SQL to find Quantity and Price per Country.
+Use SQL to find Quantity and Price per Country. And Ranking Top 10 country.
 
 USING
 
