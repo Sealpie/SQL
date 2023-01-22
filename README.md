@@ -1,4 +1,4 @@
-SQL Project
+SQL Project 
 
 Data: Chinook.db;
 
